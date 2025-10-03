@@ -1,8 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_test/firebase_options.dart';
 import 'package:firebase_test/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensures Flutter is ready before Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
